@@ -4,7 +4,7 @@ import pandas as pd
 
 # Streamlit page setup
 st.set_page_config(page_title="Real Estate Listings Viewer", layout="wide")
-st.title("우아오이 집을 찾자")
+st.title("내집마련 프로젝트")
 
 
 # Define the cookies and headers as provided
