@@ -7,6 +7,21 @@ st.set_page_config(page_title="Real Estate Listings Viewer", layout="wide")
 st.title("내집마련 프로젝트")
 
 
+def convert_to_decimal_uk(input_string):
+    # "억"과 "만" 단위 처리
+    input_string = input_string.replace(',', '').strip()
+    pattern = r'(\d+)억(?:\s*(\d+))?'
+    match = re.match(pattern, input_string)
+
+    if match:
+        # 억 단위
+        billion = int(match.group(1))
+        # 억 뒤에 만 단위가 있는 경우 처리
+        ten_thousand = int(match.group(2)) if match.group(2) else 0
+        # 소수점으로 변환
+        return billion + ten_thousand / 10000
+    return None
+
 # Define the cookies and headers as provided
 cookies = {
     'NSCS': '1',
@@ -80,6 +95,7 @@ if data:
                      "tagList", "buildingName","realtorName"]]
     df_display.columns = ["층수","호가","면적","향","등록일","설명","TAG","동","부동산"]
     df_display["면적"] = (df_display["면적"].astype(int) // 3.3).astype(int)
+    df_display["호가"] = df_displey["호가"].apply(convert_to_decimal_uk)
     # Display the table in Streamlit with a clean, readable layout
     st.write("### 버들치마을성복자이1차 리스트")
     st.dataframe(df_display, height = 500)
@@ -159,6 +175,7 @@ if data:
                      "tagList", "buildingName","realtorName"]]
     df_display.columns = ["층수","호가","면적","향","등록일","설명","TAG","동","부동산"]
     df_display["면적"] = (df_display["면적"].astype(int) // 3.3).astype(int)
+    df_display["호가"] = df_displey["호가"].apply(convert_to_decimal_uk)
     # Display the table in Streamlit with a clean, readable layout
     st.write("### 성동마을LG빌리지3차 리스트")
     st.dataframe(df_display, height = 500)
