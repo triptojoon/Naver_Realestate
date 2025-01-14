@@ -97,7 +97,7 @@ if data:
     df_display.columns = ["층수","호가","면적","향","등록일","설명","TAG","동","부동산"]
     df_display["면적"] = (df_display["면적"].astype(int) // 3.3).astype(int)
     df_display["호가"] = df_display["호가"].apply(convert_to_decimal_uk)
-    df_display = df_display.duplicates()
+    df_display = df_display.drop_duplicates()
     # Display the table in Streamlit with a clean, readable layout
     st.write("### 버들치마을성복자이1차 리스트")
     st.dataframe(df_display, height = 500)
@@ -178,7 +178,7 @@ if data:
     df_display.columns = ["층수","호가","면적","향","등록일","설명","TAG","동","부동산"]
     df_display["면적"] = (df_display["면적"].astype(int) // 3.3).astype(int)
     df_display["호가"] = df_display["호가"].apply(convert_to_decimal_uk)
-    df_display = df_display.duplicates()
+    df_display = df_display.drop_duplicates()
     # Display the table in Streamlit with a clean, readable layout
     st.write("### 성동마을LG빌리지3차 리스트")
     st.dataframe(df_display, height = 500)
