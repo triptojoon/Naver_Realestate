@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+import re
 
 # Streamlit page setup
 st.set_page_config(page_title="Real Estate Listings Viewer", layout="wide")
