@@ -65,7 +65,7 @@ headers = {
 @st.cache_data
 def fetch_all_data():
     all_articles = []
-    for page in range(1, 11):
+    for page in range(1, 16):
         try:
             # Make the request for the specific page
             url = f'https://new.land.naver.com/api/articles/complex/26925?realEstateType=APT%3APRE%3AABYG%3AJGC&tradeType=A1&tag=%3A%3A%3A%3A%3A%3A%3A%3A&rentPriceMin=0&rentPriceMax=900000000&priceMin=0&priceMax=900000000&areaMin=0&areaMax=900000000&oldBuildYears&recentlyBuildYears&minHouseHoldCount&maxHouseHoldCount&showArticle=false&sameAddressGroup=false&minMaintenanceCost&maxMaintenanceCost&priceType=RETAIL&directions=&{page}&complexNo=26925&buildingNos=&areaNos=&type=list&order=rank'
