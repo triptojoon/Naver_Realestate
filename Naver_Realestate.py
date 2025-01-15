@@ -65,7 +65,7 @@ headers = {
 @st.cache_data
 def fetch_all_data():
     all_articles = []
-    for page in range(1, 16):
+    for page in range(0, 11):
         try:
             # Make the request for the specific page
             url = f'https://new.land.naver.com/api/articles/complex/26925?realEstateType=APT%3APRE%3AABYG%3AJGC&tradeType=A1&tag=%3A%3A%3A%3A%3A%3A%3A%3A&rentPriceMin=0&rentPriceMax=900000000&priceMin=0&priceMax=900000000&areaMin=0&areaMax=900000000&oldBuildYears&recentlyBuildYears&minHouseHoldCount&maxHouseHoldCount&showArticle=false&sameAddressGroup=false&minMaintenanceCost&maxMaintenanceCost&priceType=RETAIL&directions=&{page}&complexNo=26925&buildingNos=&areaNos=&type=list&order=rank'
@@ -97,7 +97,7 @@ if data:
     df_display["면적"] = (df_display["면적"].astype(int) // 3.3).astype(int)
     df_display["호가"] = df_display["호가"].apply(convert_to_decimal_uk)
     df_display = df_display.astype(str)
-    # df_display = df_display.drop_duplicates()
+    df_display = df_display.drop_duplicates()
     # Display the table in Streamlit with a clean, readable layout
     st.write("### 버들치마을성복자이1차 리스트")
     st.dataframe(df_display, height = 500)
